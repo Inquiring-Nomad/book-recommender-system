@@ -10,7 +10,7 @@ Three algorithms have been used,
 ##### Tools and Packages:
 
 - [Cookiecutter](https://drivendata.github.io/cookiecutter-data-science/) is used to generate the project folder structure
-- The experiments are tracked with MLFlow
+- The experiments and the artifacts are tracked with [MLFlow](https://www.mlflow.org/docs/latest/index.html)
 - For the training and evaluation of the models I am using the [Surprise](https://surprise.readthedocs.io/en/stable/index.html) package.
 - [Click](https://click.palletsprojects.com/en/8.0.x/) is used to help with the command-line interface.
 
