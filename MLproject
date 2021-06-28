@@ -1,0 +1,34 @@
+name: Book recommendation
+
+
+entry_points:
+  download_data:
+      parameters:
+        url: {type: string, default: http://www2.informatik.uni-freiburg.de/~cziegler/BX/BX-CSV-Dump.zip}
+        output_dir: {type: path, default: data/external}
+      command: "python src/data/download_dataset.py {url} {output_dir}"
+  process_data:
+    parameters:
+      input_dir: { type: path, default: data/external }
+      output_dir: { type: path, default: data/processed }
+    command: "python src/data/process_dataset.py {input_dir} {output_dir}"
+  train:
+    parameters:
+      input_dir: { type: path, default: data/processed }
+      output_dir: { type: path, default: models}
+      seed: { type: float, default: 42.0}
+      split: { type: float, default: .8}
+      similarity: {type: string, default: cosine}
+      user_based: {type: string, default: False}
+    command: "python src/models/train_model.py {input_dir} {output_dir} {seed} {split} {similarity} {user_based}"
+
+  main:
+      parameters:
+        get_data: {type: string, default: False}
+        process_data: {type: string, default: False}
+        train_model: {type: string, default: False}
+        seed: { type: float, default: 42.0 }
+        split: { type: float, default: 0.8 }
+        similarity: { type: string, default: cosine }
+        user_based: { type: string, default: False }
+      command: "python src/main.py --get-data={get_data} --process-data={process_data} --train-model={train_model} -split={split} -seed={seed} -similarity={similarity} --user-based={user_based}"
