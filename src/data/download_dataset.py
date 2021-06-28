@@ -6,7 +6,7 @@ from dotenv import find_dotenv, load_dotenv
 import urllib.request
 from zipfile import ZipFile
 from io import BytesIO
-import mlflow
+import pathlib
 
 
 @click.command()

@@ -37,6 +37,12 @@ Several options can be added as parameters, for example:
 
 Will re-download and reprocess the dataset and will re-train the models, adding them as new model versions in the MLFlow model registry.
 
+By default the data directories:
+
+- `data/external`
+- `data/processed`
+
+are not version controlled because [data is treated as immutable](https://drivendata.github.io/cookiecutter-data-science/#data-is-immutable) and they are generated on the fly by the experiments.
 
 For a full list of options , please check the **MLproject** file
 
